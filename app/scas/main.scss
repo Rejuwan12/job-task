@@ -1,12 +1,4 @@
-$btn-color: #E5ABF3;
-$font-color: #000000;
-
-@mixin border-style{
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-}
+// boilerPlate
 
 *{
     box-sizing: border-box;
@@ -14,7 +6,28 @@ $font-color: #000000;
     padding: 0;
     font-family: "DM Sans", sans-serif;
     text-decoration: none;
-}
+    
+};
+
+// scss variables,nested var,mixins,include etc:
+
+
+$btn-color: #E5ABF3;
+$font-color: #000000;
+@mixin border-style{
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+};
+
+@mixin center-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
+
+//      //      //    //      //      //      //       //
 
 // nested variables
 nav{
@@ -54,8 +67,8 @@ nav{
     font-size: 14px;
     width: 140px;
     height: 50px;
-   @include border-style();
-   border: none;
+    @include border-style();
+    border: none;
    
 }
 
@@ -77,48 +90,37 @@ header{
     margin-top: 20px;
     padding: 10px;
     border: 2px solid rgb(32, 22, 22);
-    display: flex;
-    justify-content: center;
+    @include center-items();
     @include border-style();
 }
 
 .input-1 {
     padding: 2px;
-    width: 50%;
+    width: 60%;
+    height: 40px;
     font-size: 17px;
-    float: left;
     border: none;
   }
 
-// mixin and include
+// extend method 
 .input-2{
-    background-color: $btn-color;
-    font-size: 15px;
-    color: #000000;
-    font-weight: bold;
-    line-height: 24px;
-    text-align: center;
-    font-size: 14px;
+    @extend .btn1;
     width: 220px;
     height: 40px;
-    @include border-style();
-    border: none;
+    &:hover {
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+      }
 }
 
-.input-2:hover{
-    background-color: #000;
-    color: #FFF;
-    cursor: pointer
-    
-}
 
 
   
 .rating{
     margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include center-items();
+    
     
 }
 .rating p{
@@ -154,9 +156,7 @@ header{
 
 
 .wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include center-items();
     height: 30vh;
 }
 
